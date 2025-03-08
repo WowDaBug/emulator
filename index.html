@@ -25,8 +25,8 @@
     </style>
   </head>
   <body style="background-color:#333333;">
-    <body>
-      <select id="gameSelector" onchange="loadGame()">
+    <select id="gameSelector" onchange="loadGame()">
+      <option value="" disabled selected>Select a game</option>
         <option value="Adventure|atari2600|roms/Adventure (USA).a26">Adventure</option>
         <option value="A Link to the Past|snes|roms/Legend of Zelda, The - A Link to the Past (USA).sfc">A Link to the Past</option>
         <option value="Breakout|atari2600|roms/Breakout.bin">Breakout</option>
@@ -65,6 +65,8 @@
           select.value = preselected;
         }
         var gameValue = select.value;
+        if (!gameValue) return; // Prevent loading if no game is selected
+        
         var selectedGame = gameValue.split("|");
         var gameName = selectedGame[0];
         var core = selectedGame[1];
@@ -87,16 +89,14 @@
         var select = document.getElementById("gameSelector");
         
         if (gameParam) {
+          gameParam = gameParam.replace(/\+/g, " "); // Handle spaces encoded as +
           for (var i = 0; i < select.options.length; i++) {
-            if (select.options[i].text === decodeURIComponent(gameParam)) {
+            if (select.options[i].text.trim().toLowerCase() === decodeURIComponent(gameParam).trim().toLowerCase()) {
               select.value = select.options[i].value;
               loadGame(select.options[i].value);
               return;
             }
           }
-        } else {
-          // If no game is in the URL, set the dropdown without forcing reload
-          select.value = select.options[0].value;
         }
       }
       

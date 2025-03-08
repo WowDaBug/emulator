@@ -85,12 +85,10 @@
           for (var i = 0; i < select.options.length; i++) {
             if (select.options[i].text === decodeURIComponent(gameParam)) {
               loadGame(select.options[i].value);
-              return;
+              break;
             }
           }
         }
-        // If no game is in the URL, load the first game in the dropdown
-        loadGame(document.getElementById("gameSelector").options[0].value);
       }
       
       window.onload = loadGameFromURL;

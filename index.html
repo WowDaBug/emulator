@@ -53,23 +53,43 @@
         <option value="Tetris (NES)|nes|roms/Tetris (USA).nes">Tetris (NES)</option>
       </select>
       <div id="game"></div>
-      <script>
-        function loadGame() {
-          var selectedGame = document.getElementById("gameSelector").value.split("|");
-          var gameName = selectedGame[0];
-          var core = selectedGame[1];
-          var gameUrl = selectedGame[2];
-          EJS_player = "#game";
-          EJS_core = core;
-          EJS_gameName = gameName;
-          EJS_color = "#0064ff";
-          EJS_pathtodata = "https://cdn.emulatorjs.org/stable/data/";
-          EJS_gameUrl = gameUrl;
-          var scriptTag = document.createElement("script");
-          scriptTag.src = "https://cdn.emulatorjs.org/stable/data/loader.js";
-          document.body.appendChild(scriptTag);
+<script>
+  function getQueryParam(param) {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get(param);
+  }
+
+  function preloadGame() {
+    const gameParam = getQueryParam("game");
+    if (gameParam) {
+      const gameSelector = document.getElementById("gameSelector");
+      for (let option of gameSelector.options) {
+        if (option.value.startsWith(gameParam + "|")) {
+          option.selected = true;
+          loadGame(); // Automatically load the game
+          break;
         }
-        loadGame();
-      </script>
+      }
+    }
+  }
+
+  function loadGame() {
+    var selectedGame = document.getElementById("gameSelector").value.split("|");
+    var gameName = selectedGame[0];
+    var core = selectedGame[1];
+    var gameUrl = selectedGame[2];
+    EJS_player = "#game";
+    EJS_core = core;
+    EJS_gameName = gameName;
+    EJS_color = "#0064ff";
+    EJS_pathtodata = "https://cdn.emulatorjs.org/stable/data/";
+    EJS_gameUrl = gameUrl;
+    var scriptTag = document.createElement("script");
+    scriptTag.src = "https://cdn.emulatorjs.org/stable/data/loader.js";
+    document.body.appendChild(scriptTag);
+  }
+
+  preloadGame();
+</script>
     </body>
 </html>

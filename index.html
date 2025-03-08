@@ -78,13 +78,12 @@
         document.body.appendChild(scriptTag);
       }
       
-      function preloadGameFromURL() {
+      function loadGameFromURL() {
         var gameParam = getQueryParam("game");
         if (gameParam) {
           var select = document.getElementById("gameSelector");
           for (var i = 0; i < select.options.length; i++) {
             if (select.options[i].text === decodeURIComponent(gameParam)) {
-              select.selectedIndex = i;
               loadGame(select.options[i].value);
               break;
             }
@@ -92,7 +91,7 @@
         }
       }
       
-      window.onload = preloadGameFromURL;
+      window.onload = loadGameFromURL;
     </script>
-    </body>
+  </body>
 </html>

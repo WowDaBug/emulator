@@ -27,69 +27,65 @@
   <body style="background-color:#333333;">
     <select id="gameSelector" onchange="loadGame()">
       <option value="" disabled selected>Select a game</option>
-        <option value="Adventure|atari2600|roms/Adventure (USA).a26">Adventure</option>
-        <option value="A Link to the Past|snes|roms/Legend of Zelda, The - A Link to the Past (USA).sfc">A Link to the Past</option>
-        <option value="Breakout|atari2600|roms/Breakout.bin">Breakout</option>
-        <option value="Frogger|atari2600|roms/Frogger (1982) (Parker Bros).a26">Frogger</option>
-        <option value="Mario Kart 64|n64|roms/Mario Kart 64 (USA).n64">Mario Kart 64</option>
-        <option value="Ocarina of Time|n64|roms/Legend of Zelda, The - Ocarina of Time (USA).n64">Ocarina of Time</option>
-        <option value="Paper Mario|n64|roms/Paper Mario (USA).n64">Paper Mario</option>
-        <option value="Pokemon Blue|gb|roms/Pokemon Blue.gb">Pokemon Blue</option>
-        <option value="Pokemon Emerald|gba|roms/Pokemon - Emerald Version (USA, Europe).gba">Pokemon Emerald</option>
-        <option value="Pokemon FireRed|gba|roms/1695 - Pokemon Fire Red (U)(Independent).gba">Pokemon FireRed</option>
-        <option value="Pokemon LeafGreen|gba|roms/Pokemon - Leaf Green Version (U) (V1.1).gba">Pokemon LeafGreen</option>
-        <option value="Pokemon Red|gb|roms/Pokemon Red (U) [S][BF].gb">Pokemon Red</option>
-        <option value="Pokemon Yellow|gb|roms/Pokemon - Yellow Version (USA, Europe).gbc">Pokemon Yellow</option>
-        <option value="Punch Out|nes|roms/Mike Tyson's Punch-Out!! (Japan, USA).nes">Punch Out</option>
-        <option value="Sonic the Hedgehog 1|segaMD|roms/Sonic The Hedgehog (USA, Europe)">Sonic the Hedgehog 1</option>
-        <option value="Sonic the Hedgehog 2|segaMD|roms/Sonic The Hedgehog 2 (World) (Rev A)">Sonic the Hedgehog 2</option>
-        <option value="Sonic the Hedgehog 3|segaMD|roms/Sonic The Hedgehog 3 (Europe)">Sonic the Hedgehog 3</option>
-        <option value="Sonic Advance|gba|roms/Sonic Advance (USA) (En,Ja).gba">Sonic Advance</option>
-        <option value="Super Mario 64|n64|roms/Super Mario 64 (USA).z64">Super Mario 64</option>
-        <option value="Super Mario All-Stars|snes|roms/Super Mario All Stars (U).smc">Super Mario All-Stars</option>
-        <option value="Super Mario Bros|nes|roms/Super Mario Bros (E).nes">Super Mario Bros</option>
-        <option value="Super Mario World|snes|roms/Super Mario World (U).smc">Super Mario World</option>
-        <option value="Tetris (GB)|gb|roms/Tetris.gb">Tetris (GB)</option>
-        <option value="Tetris (NES)|nes|roms/Tetris (USA).nes">Tetris (NES)</option>
-      </select>
-      <div id="game"></div>
+      <option value="Adventure|atari2600|roms/Adventure (USA).a26">Adventure</option>
+      <option value="A Link to the Past|snes|roms/Legend of Zelda, The - A Link to the Past (USA).sfc">A Link to the Past</option>
+      <option value="Breakout|atari2600|roms/Breakout.bin">Breakout</option>
+      <option value="Frogger|atari2600|roms/Frogger (1982) (Parker Bros).a26">Frogger</option>
+      <option value="Mario Kart 64|n64|roms/Mario Kart 64 (USA).n64">Mario Kart 64</option>
+      <option value="Ocarina of Time|n64|roms/Legend of Zelda, The - Ocarina of Time (USA).n64">Ocarina of Time</option>
+      <option value="Paper Mario|n64|roms/Paper Mario (USA).n64">Paper Mario</option>
+      <option value="Pokemon Blue|gb|roms/Pokemon Blue.gb">Pokemon Blue</option>
+      <option value="Pokemon Emerald|gba|roms/Pokemon - Emerald Version (USA, Europe).gba">Pokemon Emerald</option>
+      <option value="Pokemon FireRed|gba|roms/1695 - Pokemon Fire Red (U)(Independent).gba">Pokemon FireRed</option>
+      <option value="Pokemon LeafGreen|gba|roms/Pokemon - Leaf Green Version (U) (V1.1).gba">Pokemon LeafGreen</option>
+      <option value="Pokemon Red|gb|roms/Pokemon Red (U) [S][BF].gb">Pokemon Red</option>
+      <option value="Pokemon Yellow|gb|roms/Pokemon - Yellow Version (USA, Europe).gbc">Pokemon Yellow</option>
+      <option value="Punch Out|nes|roms/Mike Tyson's Punch-Out!! (Japan, USA).nes">Punch Out</option>
+      <option value="Sonic the Hedgehog 1|segaMD|roms/Sonic The Hedgehog (USA, Europe)">Sonic the Hedgehog 1</option>
+      <option value="Sonic the Hedgehog 2|segaMD|roms/Sonic The Hedgehog 2 (World) (Rev A)">Sonic the Hedgehog 2</option>
+      <option value="Sonic the Hedgehog 3|segaMD|roms/Sonic The Hedgehog 3 (Europe)">Sonic the Hedgehog 3</option>
+      <option value="Sonic Advance|gba|roms/Sonic Advance (USA) (En,Ja).gba">Sonic Advance</option>
+      <option value="Super Mario 64|n64|roms/Super Mario 64 (USA).z64">Super Mario 64</option>
+      <option value="Super Mario All-Stars|snes|roms/Super Mario All Stars (U).smc">Super Mario All-Stars</option>
+      <option value="Super Mario Bros|nes|roms/Super Mario Bros (E).nes">Super Mario Bros</option>
+      <option value="Super Mario World|snes|roms/Super Mario World (U).smc">Super Mario World</option>
+      <option value="Tetris (GB)|gb|roms/Tetris.gb">Tetris (GB)</option>
+      <option value="Tetris (NES)|nes|roms/Tetris (USA).nes">Tetris (NES)</option>
+    </select>
+    <div id="game"></div>
     <script>
       function getQueryParam(param) {
         const urlParams = new URLSearchParams(window.location.search);
         return urlParams.get(param);
       }
-      
+
       function loadGame(preselected) {
         var select = document.getElementById("gameSelector");
         if (preselected) {
           select.value = preselected;
         }
         var gameValue = select.value;
-        if (!gameValue) return; // Prevent loading if no game is selected
-        
+        if (!gameValue) return;
         var selectedGame = gameValue.split("|");
         var gameName = selectedGame[0];
         var core = selectedGame[1];
         var gameUrl = selectedGame[2];
-        
         EJS_player = "#game";
         EJS_core = core;
         EJS_gameName = gameName;
         EJS_color = "#0064ff";
         EJS_pathtodata = "https://cdn.emulatorjs.org/stable/data/";
         EJS_gameUrl = gameUrl;
-        
         var scriptTag = document.createElement("script");
         scriptTag.src = "https://cdn.emulatorjs.org/stable/data/loader.js";
         document.body.appendChild(scriptTag);
       }
-      
+
       function loadGameFromURL() {
         var gameParam = getQueryParam("game");
         var select = document.getElementById("gameSelector");
-        
         if (gameParam) {
-          gameParam = gameParam.replace(/\+/g, " "); // Handle spaces encoded as +
+          gameParam = gameParam.replace(/\+/g, " ");
           for (var i = 0; i < select.options.length; i++) {
             if (select.options[i].text.trim().toLowerCase() === decodeURIComponent(gameParam).trim().toLowerCase()) {
               select.value = select.options[i].value;
@@ -99,7 +95,6 @@
           }
         }
       }
-      
       window.onload = loadGameFromURL;
     </script>
   </body>

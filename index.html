@@ -60,7 +60,11 @@
       }
       
       function loadGame(preselected) {
-        var gameValue = preselected || document.getElementById("gameSelector").value;
+        var select = document.getElementById("gameSelector");
+        if (preselected) {
+          select.value = preselected;
+        }
+        var gameValue = select.value;
         var selectedGame = gameValue.split("|");
         var gameName = selectedGame[0];
         var core = selectedGame[1];
@@ -80,14 +84,19 @@
       
       function loadGameFromURL() {
         var gameParam = getQueryParam("game");
+        var select = document.getElementById("gameSelector");
+        
         if (gameParam) {
-          var select = document.getElementById("gameSelector");
           for (var i = 0; i < select.options.length; i++) {
             if (select.options[i].text === decodeURIComponent(gameParam)) {
+              select.value = select.options[i].value;
               loadGame(select.options[i].value);
-              break;
+              return;
             }
           }
+        } else {
+          // If no game is in the URL, set the dropdown without forcing reload
+          select.value = select.options[0].value;
         }
       }
       

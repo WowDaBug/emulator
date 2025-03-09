@@ -57,32 +57,40 @@
         const urlParams = new URLSearchParams(window.location.search);
         return urlParams.get(param);
       }
-
+      
       function loadGame(preselected) {
         var select = document.getElementById("gameSelector");
         if (preselected) {
           select.value = preselected;
         }
-        var gameValue = select.value;
-        if (!gameValue) return;
-        var selectedGame = gameValue.split("|");
+        if (!select.value) return; 
+
+        if (window.EJS_emulator) {
+          window.EJS_emulator.stop(); 
+        }
+        document.getElementById("game").innerHTML = ""; 
+        
+        var selectedGame = select.value.split("|");
         var gameName = selectedGame[0];
         var core = selectedGame[1];
         var gameUrl = selectedGame[2];
+        
         EJS_player = "#game";
         EJS_core = core;
         EJS_gameName = gameName;
         EJS_color = "#0064ff";
         EJS_pathtodata = "https://cdn.emulatorjs.org/stable/data/";
         EJS_gameUrl = gameUrl;
+        
         var scriptTag = document.createElement("script");
         scriptTag.src = "https://cdn.emulatorjs.org/stable/data/loader.js";
         document.body.appendChild(scriptTag);
       }
-
+      
       function loadGameFromURL() {
         var gameParam = getQueryParam("game");
         var select = document.getElementById("gameSelector");
+        
         if (gameParam) {
           gameParam = gameParam.replace(/\+/g, " ");
           for (var i = 0; i < select.options.length; i++) {
@@ -94,6 +102,7 @@
           }
         }
       }
+      
       window.onload = loadGameFromURL;
     </script>
   </body>

@@ -63,12 +63,9 @@
         if (preselected) {
           select.value = preselected;
         }
-        if (!select.value) return; // Prevent loading when "Select a game" is chosen
+        if (!select.value) return;
 
-        if (window.EJS_emulator) {
-          window.EJS_emulator.stop(); // Stop the previous game instance
-        }
-        document.getElementById("game").innerHTML = ""; // Clear the previous game display
+        document.getElementById("game").innerHTML = "";
         
         var selectedGame = select.value.split("|");
         var gameName = selectedGame[0];

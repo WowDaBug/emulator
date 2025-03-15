@@ -52,61 +52,67 @@
       <option value="Tetris (NES)|nes|roms/Tetris (USA).nes">Tetris (NES)</option>
     </select>
     <div id="game"></div>
-    <script>
-      function getQueryParam(param) {
-        const urlParams = new URLSearchParams(window.location.search);
-        return urlParams.get(param);
-      }
-      
-      function loadGame(preselected) {
-        var select = document.getElementById("gameSelector");
-        if (preselected) {
-          select.value = preselected;
-        }
-        if (!select.value) return;
+<script>
+  function getQueryParam(param) {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get(param);
+  }
+  
+  function loadGame(preselected) {
+    var select = document.getElementById("gameSelector");
+    if (preselected) {
+      select.value = preselected;
+    }
+    if (!select.value) return;
 
-        document.getElementById("game").innerHTML = "";
-        
-        var selectedGame = select.value.split("|");
-        var gameName = selectedGame[0];
-        var core = selectedGame[1];
-        var gameUrl = selectedGame[2];
-        
-        EJS_player = "#game";
-        EJS_core = core;
-        EJS_gameName = gameName;
-        EJS_color = "#0064ff";
-        EJS_pathtodata = "https://cdn.emulatorjs.org/stable/data/";
-        EJS_gameUrl = gameUrl;
-        
-        var scriptTag = document.createElement("script");
-        scriptTag.src = "https://cdn.emulatorjs.org/stable/data/loader.js";
-        document.body.appendChild(scriptTag);
-      }
-      
-      function loadGameFromURL() {
-        var gameParam = getQueryParam("g");
-        var hideSelector = getQueryParam("hs");
-        var select = document.getElementById("gameSelector");
-        
-        if (hideSelector === "true") {
-          select.style.display = "none";
+    // Stop the current game if one is running
+    if (typeof Emulator !== 'undefined' && Emulator.isRunning()) {
+      Emulator.pause(); // Pause the current game (this is an example, make sure it's the correct method)
+    }
+
+    document.getElementById("game").innerHTML = "";
+    
+    var selectedGame = select.value.split("|");
+    var gameName = selectedGame[0];
+    var core = selectedGame[1];
+    var gameUrl = selectedGame[2];
+    
+    EJS_player = "#game";
+    EJS_core = core;
+    EJS_gameName = gameName;
+    EJS_color = "#0064ff";
+    EJS_pathtodata = "https://cdn.emulatorjs.org/stable/data/";
+    EJS_gameUrl = gameUrl;
+    
+    var scriptTag = document.createElement("script");
+    scriptTag.src = "https://cdn.emulatorjs.org/stable/data/loader.js";
+    document.body.appendChild(scriptTag);
+  }
+  
+  function loadGameFromURL() {
+    var gameParam = getQueryParam("g");
+    var hideSelector = getQueryParam("hs");
+    var select = document.getElementById("gameSelector");
+    
+    if (hideSelector === "true") {
+      select.style.display = "none";
+    }
+    
+    if (gameParam) {
+      gameParam = gameParam.replace(/\+/g, " ");
+      for (var i = 0; i < select.options.length; i++) {
+        if (select.options[i].text.trim().toLowerCase() === decodeURIComponent(gameParam).trim().toLowerCase()) {
+          select.value = select.options[i].value;
+          loadGame(select.options[i].value);
+          return;
         }
-        
-        if (gameParam) {
-          gameParam = gameParam.replace(/\+/g, " ");
-          for (var i = 0; i < select.options.length; i++) {
-            if (select.options[i].text.trim().toLowerCase() === decodeURIComponent(gameParam).trim().toLowerCase()) {
-              select.value = select.options[i].value;
-              loadGame(select.options[i].value);
-              return;
-            }
-          }
-        }
-        document.getElementById("gameSelector").selectedIndex = 0;
       }
-      
-      window.onload = loadGameFromURL;
-    </script>
+    }
+    document.getElementById("gameSelector").selectedIndex = 0;
+  }
+  
+  window.onload = loadGameFromURL;
+</script>
+
   </body>
 </html>

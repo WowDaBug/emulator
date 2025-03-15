@@ -63,9 +63,12 @@
         if (preselected) {
           select.value = preselected;
         }
-        if (!select.value) return;
+        if (!select.value) return; // Prevent loading when "Select a game" is chosen
 
-        document.getElementById("game").innerHTML = "";
+        if (window.EJS_emulator) {
+          window.EJS_emulator.stop(); // Stop the previous game instance
+        }
+        document.getElementById("game").innerHTML = ""; // Clear the previous game display
         
         var selectedGame = select.value.split("|");
         var gameName = selectedGame[0];
@@ -86,7 +89,12 @@
       
       function loadGameFromURL() {
         var gameParam = getQueryParam("game");
+        var hideSelector = getQueryParam("hideSelector");
         var select = document.getElementById("gameSelector");
+        
+        if (hideSelector === "true") {
+          select.style.display = "none";
+        }
         
         if (gameParam) {
           gameParam = gameParam.replace(/\+/g, " ");

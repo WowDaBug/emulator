@@ -57,7 +57,7 @@
     const urlParams = new URLSearchParams(window.location.search);
     return urlParams.get(param);
   }
-  
+
   function loadGame(preselected) {
     var select = document.getElementById("gameSelector");
     if (preselected) {
@@ -65,11 +65,16 @@
     }
     if (!select.value) return;
 
-    // Stop the current game if one is running
-    if (typeof Emulator !== 'undefined' && Emulator.isRunning()) {
-      Emulator.pause(); // Pause the current game (this is an example, make sure it's the correct method)
+    // Stop and reset the current game
+    if (typeof Emulator !== 'undefined') {
+      // Assuming Emulator has a method to stop or reset the game
+      if (Emulator.isRunning()) {
+        Emulator.stop();  // Stop the current game
+      }
+      Emulator.reset(); // Reset the emulator to a clean state
     }
 
+    // Clear the game area
     document.getElementById("game").innerHTML = "";
     
     var selectedGame = select.value.split("|");
@@ -88,16 +93,16 @@
     scriptTag.src = "https://cdn.emulatorjs.org/stable/data/loader.js";
     document.body.appendChild(scriptTag);
   }
-  
+
   function loadGameFromURL() {
     var gameParam = getQueryParam("g");
     var hideSelector = getQueryParam("hs");
     var select = document.getElementById("gameSelector");
-    
+
     if (hideSelector === "true") {
       select.style.display = "none";
     }
-    
+
     if (gameParam) {
       gameParam = gameParam.replace(/\+/g, " ");
       for (var i = 0; i < select.options.length; i++) {
@@ -110,9 +115,10 @@
     }
     document.getElementById("gameSelector").selectedIndex = 0;
   }
-  
+
   window.onload = loadGameFromURL;
 </script>
+
 
   </body>
 </html>

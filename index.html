@@ -65,33 +65,59 @@
     }
     if (!select.value) return;
 
-    // Stop and reset the current game
-    if (typeof Emulator !== 'undefined') {
-      // Assuming Emulator has a method to stop or reset the game
-      if (Emulator.isRunning()) {
-        Emulator.stop();  // Stop the current game
-      }
-      Emulator.reset(); // Reset the emulator to a clean state
-    }
+    // Stop the current game before loading a new one
+    stopCurrentGame();
 
-    // Clear the game area
+    // Clear the game area to prepare for the new game
     document.getElementById("game").innerHTML = "";
-    
+
     var selectedGame = select.value.split("|");
     var gameName = selectedGame[0];
     var core = selectedGame[1];
     var gameUrl = selectedGame[2];
-    
+
+    // Set up the parameters for the new game
     EJS_player = "#game";
     EJS_core = core;
     EJS_gameName = gameName;
     EJS_color = "#0064ff";
     EJS_pathtodata = "https://cdn.emulatorjs.org/stable/data/";
     EJS_gameUrl = gameUrl;
-    
+
+    // Remove any existing script tag for the loader
+    var existingScript = document.getElementById("emulatorScript");
+    if (existingScript) {
+      existingScript.remove();
+    }
+
+    // Create a new script tag to load the game
     var scriptTag = document.createElement("script");
     scriptTag.src = "https://cdn.emulatorjs.org/stable/data/loader.js";
+    scriptTag.id = "emulatorScript"; // Add an ID to reference and remove the script tag later
     document.body.appendChild(scriptTag);
+  }
+
+  function stopCurrentGame() {
+    // If EmulatorJS is running, stop it and reset everything
+    if (typeof Emulator !== 'undefined') {
+      // Attempt to stop and reset the emulator (adjust according to your emulator's actual methods)
+      if (Emulator.isRunning()) {
+        Emulator.stop();  // Stops the emulator
+      }
+      Emulator.reset(); // Resets the emulator (if available)
+    }
+
+    // Optionally clear any other global game variables or objects, e.g., clearing timeouts, intervals, etc.
+    clearTimeoutsAndIntervals();
+  }
+
+  function clearTimeoutsAndIntervals() {
+    // Clear any global timeouts or intervals if needed to fully reset the game state
+    var highest = setTimeout(() => {});
+    for (var i = 0; i < highest; i++) {
+      clearTimeout(i);
+      clearInterval(i);
+    }
   }
 
   function loadGameFromURL() {
@@ -118,7 +144,5 @@
 
   window.onload = loadGameFromURL;
 </script>
-
-
   </body>
 </html>

@@ -95,7 +95,7 @@
         var gameUrl = selectedGame[2];
         EJS_player = "#game";
         EJS_core = core;
-        EJS_gameName = gameName;
+        EJS_gameName = gameName.replace(/_/g, " ");
         EJS_color = "#0064ff";
         EJS_pathtodata = "https://cdn.emulatorjs.org/stable/data/";
         EJS_gameUrl = gameUrl;
@@ -135,7 +135,7 @@
           select.style.display = "none";
         }
         if (gameParam) {
-          gameParam = gameParam.replace(/\+/g, " ");
+          gameParam = gameParam.replace(/_/g, " ");
           for (var i = 0; i < select.options.length; i++) {
             if (select.options[i].text.trim().toLowerCase() === decodeURIComponent(gameParam).trim().toLowerCase()) {
               select.value = select.options[i].value;

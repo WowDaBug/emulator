@@ -1,0 +1,206 @@
+[
+  {
+    "name": "Adventure",
+    "id": "Adventure",
+    "core": "atari2600",
+    "path": "roms/Adventure (USA).a26"
+  },
+  {
+    "name": "Banjo-Kazooie",
+    "id": "Banjo-Kazooie",
+    "core": "n64",
+    "path": "roms/Banjo-Kazooie (USA) (Rev A).n64"
+  },
+  {
+    "name": "Bomberman",
+    "id": "Bomberman",
+    "core": "nes",
+    "path": "roms/Bomberman (USA).nes"
+  },
+  {
+    "name": "Breakout",
+    "id": "Breakout",
+    "core": "atari2600",
+    "path": "roms/Breakout.bin"
+  },
+  {
+    "name": "Donkey Kong Country",
+    "id": "Donkey_Kong_Country",
+    "core": "snes",
+    "path": "roms/Donkey Kong Country (USA) (Rev 2).sfc"
+  },
+  {
+    "name": "Donkey Kong 64",
+    "id": "Donkey_Kong_64",
+    "core": "n64",
+    "path": "roms/Donkey Kong 64 (USA).z64"
+  },
+  {
+    "name": "Mario Bros",
+    "id": "Mario_Bros",
+    "core": "nes",
+    "path": "roms/Mario Bros. (USA) (GameCube Edition).nes"
+  },
+  {
+    "name": "Super Mario Bros 1",
+    "id": "Super_Mario_Bros_1",
+    "core": "nes",
+    "path": "roms/Super Mario Bros (E).nes"
+  },
+  {
+    "name": "Super Mario Bros 2",
+    "id": "Super_Mario_Bros_2",
+    "core": "nes",
+    "path": "roms/Super Mario Bros. 2 (USA) (Rev 1).nes"
+  },
+  {
+    "name": "Super Mario Bros 3",
+    "id": "Super_Mario_Bros_3",
+    "core": "nes",
+    "path": "roms/Super Mario Bros. 3 (USA) (Rev 1).nes"
+  },
+  {
+    "name": "Super Mario All-Stars",
+    "id": "Super_Mario_All-Stars",
+    "core": "snes",
+    "path": "roms/Super Mario All Stars (U).smc"
+  },
+  {
+    "name": "Super Mario World",
+    "id": "Super_Mario_World",
+    "core": "snes",
+    "path": "roms/Super Mario World (U).smc"
+  },
+  {
+    "name": "Super Mario 64",
+    "id": "Super_Mario_64",
+    "core": "n64",
+    "path": "roms/Super Mario 64 (USA).z64"
+  },
+  {
+    "name": "Mario Kart 64",
+    "id": "Mario_Kart_64",
+    "core": "n64",
+    "path": "roms/Mario Kart 64 (USA).n64"
+  },
+  {
+    "name": "Paper Mario",
+    "id": "Paper_Mario",
+    "core": "n64",
+    "path": "roms/Paper Mario (USA).n64"
+  },
+  {
+    "name": "Pokemon Red",
+    "id": "Pokemon_Red",
+    "core": "gb",
+    "path": "roms/Pokemon Red (U) [S][BF].gb"
+  },
+  {
+    "name": "Pokemon Blue",
+    "id": "Pokemon_Blue",
+    "core": "gb",
+    "path": "roms/Pokemon Blue.gb"
+  },
+  {
+    "name": "Pokemon Yellow",
+    "id": "Pokemon_Yellow",
+    "core": "gbc",
+    "path": "roms/Pokemon - Yellow Version (USA, Europe).gbc"
+  },
+  {
+    "name": "Pokemon Emerald",
+    "id": "Pokemon_Emerald",
+    "core": "gba",
+    "path": "roms/Pokemon - Emerald Version (USA, Europe).gba"
+  },
+  {
+    "name": "Pokemon FireRed",
+    "id": "Pokemon_FireRed",
+    "core": "gba",
+    "path": "roms/1695 - Pokemon Fire Red (U)(Independent).gba"
+  },
+  {
+    "name": "Pokemon LeafGreen",
+    "id": "Pokemon_LeafGreen",
+    "core": "gba",
+    "path": "roms/Pokemon - Leaf Green Version (U) (V1.1).gba"
+  },
+  {
+    "name": "Punch Out",
+    "id": "Punch_Out",
+    "core": "nes",
+    "path": "roms/Mike Tyson's Punch-Out!! (Japan, USA).nes"
+  },
+  {
+    "name": "Sonic the Hedgehog 1",
+    "id": "Sonic_the_Hedgehog_1",
+    "core": "segaMD",
+    "path": "roms/Sonic The Hedgehog (USA, Europe)"
+  },
+  {
+    "name": "Sonic the Hedgehog 2",
+    "id": "Sonic_the_Hedgehog_2",
+    "core": "segaMD",
+    "path": "roms/Sonic The Hedgehog 2 (World) (Rev A)"
+  },
+  {
+    "name": "Sonic the Hedgehog 3",
+    "id": "Sonic_the_Hedgehog_3",
+    "core": "segaMD",
+    "path": "roms/Sonic The Hedgehog 3 (Europe)"
+  },
+  {
+    "name": "Sonic & Knuckles",
+    "id": "Sonic_and_Knuckles",
+    "core": "segaMD",
+    "path": "roms/Sonic & Knuckles (World)"
+  },
+  {
+    "name": "Sonic Advance",
+    "id": "Sonic_Advance",
+    "core": "gba",
+    "path": "roms/Sonic Advance (USA) (En,Ja).gba"
+  },
+  {
+    "name": "Super Smash Bros",
+    "id": "Super_Smash_Bros",
+    "core": "n64",
+    "path": "roms/Super Smash Bros. (USA).n64"
+  },
+  {
+    "name": "Tetris (GB)",
+    "id": "Tetris_GB",
+    "core": "gb",
+    "path": "roms/Tetris.gb"
+  },
+  {
+    "name": "Tetris (NES)",
+    "id": "Tetris_NES",
+    "core": "nes",
+    "path": "roms/Tetris (USA).nes"
+  },
+  {
+    "name": "The Legend of Zelda",
+    "id": "The_Legend_of_Zelda",
+    "core": "nes",
+    "path": "roms/Legend of Zelda, The (USA).nes"
+  },
+  {
+    "name": "A Link to the Past",
+    "id": "A_Link_to_the_Past",
+    "core": "snes",
+    "path": "roms/Legend of Zelda, The - A Link to the Past (USA).sfc"
+  },
+  {
+    "name": "Ocarina of Time",
+    "id": "Ocarina_of_Time",
+    "core": "n64",
+    "path": "roms/Legend of Zelda, The - Ocarina of Time (USA).n64"
+  },
+  {
+    "name": "Majora's Mask",
+    "id": "Majoras_Mask",
+    "core": "n64",
+    "path": "roms/Legend of Zelda, The - Majora's Mask (USA).n64"
+  }
+]
